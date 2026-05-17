@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Shopping</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+    body {background:linear-gradient(135deg,#f7a6a6,#fbd3d3);color:#fff;overflow-x:hidden;}
+
+    header {display:flex;justify-content:space-between;align-items:center;padding:20px 50px;}
+    nav {display:flex;gap:20px;}
+    nav a {color:#fff;text-decoration:none;font-weight:500;cursor:pointer;}
+    nav a:hover {text-decoration:underline;}
+
+    .menu {display:none;font-size:24px;cursor:pointer;}
+
+    .container {display:flex;align-items:center;justify-content:space-between;padding:50px;min-height:90vh;}
+
+    .left {max-width:50%;}
+    .left h1 {font-size:60px;font-weight:700;line-height:1.2;}
+    .left h2 {margin-top:10px;letter-spacing:2px;}
+    .left p {margin:20px 0;color:#ffecec;}
+
+    .btn {padding:12px 25px;border-radius:30px;border:none;cursor:pointer;margin-right:10px;font-weight:600;}
+    .primary {background:#ff5a5f;color:#fff;}
+    .secondary {background:transparent;border:2px solid #fff;color:#fff;}
+
+    .right {max-width:50%;text-align:center;}
+    .circle {width:450px;height:450px;border-radius:50%;border:8px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;margin:auto;overflow:hidden;}
+    .circle img {width:80%;transition:0.5s;}
+
+    footer {display:flex;justify-content:center;gap:15px;padding:20px;}
+    footer div {width:35px;height:35px;border-radius:50%;background:rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;}
+
+    /* Mobile */
+    @media(max-width:900px){
+      nav {position:absolute;top:70px;right:0;background:#ff7b7b;width:200px;flex-direction:column;padding:20px;display:none;}
+      nav.active {display:flex;}
+      .menu {display:block;}
+
+      .container {flex-direction:column;text-align:center;}
+      .left,.right {max-width:100%;}
+      .left h1 {font-size:40px;}
+      .circle {width:280px;height:280px;margin-top:20px;}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="menu" onclick="toggleMenu()">☰</div>
+  <nav id="navLinks">
+    <a onclick="scrollToSection('home')">HOME</a>
+    <a onclick="scrollToSection('about')">ABOUT</a>
+    <a onclick="scrollToSection('service')">SERVICE</a>
+    <a onclick="scrollToSection('contact')">CONTACT</a>
+  </nav>
+</header>
+
+<div class="container" id="home">
+  <div class="left">
+    <h1>ONLINE<br>SHOPPING</h1>
+    <h2>LANDING PAGE</h2>
+    <p>Explore amazing products with dynamic UI experience.</p>
+    <button class="btn primary">SHOP NOW</button>
+    <button class="btn secondary">LEARN MORE</button>
+  </div>
+
+  <div class="right">
+    <div class="circle">
+      <img id="slider" src="https://cdn-icons-png.flaticon.com/512/263/263142.png" alt="product">
+    </div>
+  </div>
+</div>
+
+<!-- Sections -->
+<div id="about" style="padding:100px;text-align:center;">About Section</div>
+<div id="service" style="padding:100px;text-align:center;">Service Section</div>
+<div id="contact" style="padding:100px;text-align:center;">Contact Section</div>
+
+<footer>
+  <div>f</div>
+  <div>t</div>
+  <div>in</div>
+</footer>
+
+<script>
+  // Menu toggle
+  function toggleMenu(){
+    document.getElementById('navLinks').classList.toggle('active');
+  }
+
+  // Smooth scroll
+  function scrollToSection(id){
+    document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  }
+
+  // Image slider
+  const images = [
+    "https://cdn-icons-png.flaticon.com/512/263/263142.png",
+    "https://cdn-icons-png.flaticon.com/512/891/891419.png",
+    "https://cdn-icons-png.flaticon.com/512/1046/1046857.png",
+    "https://cdn-icons-png.flaticon.com/512/3081/3081559.png"
+  ];
+
+  let index = 0;
+  setInterval(()=>{
+    index = (index + 1) % images.length;
+    document.getElementById('slider').src = images[index];
+  },2000);
+</script>
+
+</body>
+</html>
